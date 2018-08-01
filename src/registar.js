@@ -10,10 +10,11 @@ const fire = (clientSecret, clientId, accountId, type) => {
         return;
     }
 
+    const baseAuthString = Buffer.from(`${clientSecret}:${clientId}`).toString('base64');
     const options = {
         method: 'POST',
         url: `${nylasApiUrl}/a/${clientId}/accounts/${accountId}/${type}`,
-        headers: {authorization: `${clientSecret}:${clientId}`}
+        headers: {Authorization: `Basic ${baseAuthString}`}
     };
 
     request(options, function (error, response, body) {
