@@ -1,1 +1,7 @@
 .idea/
+node_modules/
+
+npm-debug.log
+test_send.js
+test_deregister.js
+test_reregister.js
