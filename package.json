@@ -1,0 +1,22 @@
+{
+  "name": "nylas-integration",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "request": "^2.87.0",
+    "when": "^3.7.8"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voucherifyio/nylas-integration.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voucherifyio/nylas-integration/issues"
+  },
+  "homepage": "https://github.com/voucherifyio/nylas-integration#readme"
+}
