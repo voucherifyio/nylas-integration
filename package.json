@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
     "lodash": "^4.17.10",
     "request": "^2.87.0",
     "when": "^3.7.8"

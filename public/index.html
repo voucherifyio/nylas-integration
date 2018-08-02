@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body onload="fillCode()">
+<div>
+    <h1>Nylas Integration - Client Side</h1>
+
+    <hr>
+
+    <h2>oAuth email</h2>
+    <button type="button"
+            onclick="redirect('marek.szymeczko@rspective.pl', '36n3ovomd633uzr1ss75pqsvv', 'http://localhost:3000')">
+        Login
+    </button>
+
+    <form id="fetch" onsubmit="fetch(); return false;">
+        <h2>Fetch token</h2>
+        <label for="code">Redirection Code:</label>
+        <input id="code" name="code" value="">
+        <input type="submit" value="Fetch Token">
+    </form>
+
+    <div id="fetch-result"></div>
+
+</div>
+<script>
+    const redirect = (email, clientId, redirectUrl) => {
+        const nylasApiUrl = 'https://api.nylas.com';
+        window.location.href = `${nylasApiUrl}/oauth/authorize?client_id=${clientId}&response_type=code&scope=${email}&login_hint=${email}&redirect_uri=${redirectUrl}`;
+    };
+
+    const fetch = () => {
+        const formResultDiv = document.getElementById('fetch-result');
+        const form = document.getElementById("fetch");
+        const code = form.code.value;
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                formResultDiv.innerText = this.responseText;
+            }
+        });
+        xhr.open("GET", `/api/token/${code}`);
+        xhr.send(JSON.stringify(false));
+    };
+
+    const fillCode = () => {
+        const params = window.location.search.substr(1);
+
+        if (params !== '') {
+            const form = document.getElementById("fetch");
+            form.code.value = params.replace('code=', '');
+        }
+    };
+</script>
+</body>
+</html>
+
